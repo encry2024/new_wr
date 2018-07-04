@@ -54,20 +54,30 @@ class IndentedProposalController extends Controller
      */
     public function create(CreateIndentedProposalRequest $request)
     {
-        $ordered_products = [];
-        
-        if (session()->has('products')) {
-            $products = session()->get('products');
+        if (Auth::user()->customers->count() != 0) {
             $ordered_products = [];
 
-            foreach($products as $key => $product) {
-                $product = explode('-', $product);
-                // Set Model
-                $model = 'App\Models\\'.$product[1].'\\'.$product[1];
-                // Set ID
-                $id = $product[0];
+            if (session()->has('products')) {
+                $products = session()->get('products');
+                $ordered_products = [];
 
-                $ordered_products[] = $model::find($id);
+                foreach($products as $key => $product) {
+                    $product = explode('-', $product);
+                    // Set Model
+                    $model = 'App\Models\\'.$product[1].'\\'.$product[1];
+                    // Set ID
+                    $id = $product[0];
+
+                    $ordered_products[] = $model::find($id);
+                }
+
+                if (Auth::user()->roles_label == "Sales Agent") {
+                    $customers = Customer::where('user_id', Auth::user()->id)->get();
+                } else if (Auth::user()->roles_label == "Administrator") {
+                    $customers = Customer::all();
+                }
+
+                return view('backend.indented_proposal.create')->withCustomers($customers)->with('ordered_products', $ordered_products);
             }
 
             if (Auth::user()->roles_label == "Sales Agent") {
@@ -77,15 +87,9 @@ class IndentedProposalController extends Controller
             }
 
             return view('backend.indented_proposal.create')->withCustomers($customers)->with('ordered_products', $ordered_products);
+        } else {
+            return redirect()->back()->withFlashDanger('There are no assigned customers to your account.');
         }
-
-        if (Auth::user()->roles_label == "Sales Agent") {
-            $customers = Customer::where('user_id', Auth::user()->id)->get();
-        } else if (Auth::user()->roles_label == "Administrator") {
-            $customers = Customer::all();
-        }
-
-        return view('backend.indented_proposal.create')->withCustomers($customers)->with('ordered_products', $ordered_products);
     }
 
     /**

@@ -159,7 +159,7 @@
                             <th>DELIVERY</th>
                         </thead>
 
-                        <tbody> 
+                        <tbody>
                             @if (!empty($ordered_products))
                                 @foreach ($ordered_products as $ordered_product)
                                 <tr>
@@ -237,7 +237,7 @@
                 },
                 dataType: 'JSON',
                 success: function(ratio) {
-                    
+
                     total_currency = parseFloat(currency.attr('data-amount')).toFixed(2) * ratio;
                     currency.attr('data-amount', total_currency.toFixed(2));
                     currency.closest('tr').find('input#price').val(total_currency.toFixed(2));

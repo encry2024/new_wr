@@ -5,6 +5,7 @@ namespace App\Models\Auth\Traits\Relationship;
 use App\Models\System\Session;
 use App\Models\Auth\SocialAccount;
 use App\Models\TargetRevenue\TargetRevenue;
+use App\Models\Customer\Customer;
 
 /**
  * Class UserRelationship.
@@ -33,5 +34,10 @@ trait UserRelationship
     public function target_revenues()
     {
         return $this->hasMany(TargetRevenue::class);
+    }
+
+    public function customers()
+    {
+        return $this->hasMany(Customer::class);
     }
 }
