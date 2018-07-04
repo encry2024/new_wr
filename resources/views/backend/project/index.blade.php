@@ -42,7 +42,7 @@
                                     <tr>
                                         <td>{{ $project->name }}</td>
                                         @if (count($project->customer))
-                                        <td>{!! $project->customer->trashed() ? "<label class='badge badge-danger' style='font-size: 10px;'>Customer was deleted</label>" : $project->customer->name !!}</td>
+                                            <td>{!! $project->customer->trashed() ? "<label class='badge badge-danger' style='font-size: 10px;'>Customer was deleted</label>" : $project->customer->name !!}</td>
                                         @else
                                             <td>
                                                 <label class='badge badge-danger' style='font-size: 10px;'>Customer was deleted permanently</label>

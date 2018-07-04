@@ -174,7 +174,10 @@ class UserRepository extends BaseRepository
                 $user->syncRoles($data['roles']);
                 $user->syncPermissions($data['permissions']);
 
-                event(new UserUpdated($user));
+                $auth_link = "<a href='".route('admin.auth.user.show', auth()->id())."'>".Auth::user()->full_name.'</a>';
+                $asset_link = "<a href='".route('admin.access.user.show', $user->id)."'>".$user->name.'</a>';
+
+                event(new UserUpdated($auth_link, $asset_link));
 
                 return $user;
             }
@@ -195,7 +198,10 @@ class UserRepository extends BaseRepository
         $user->password = Hash::make($input['password']);
 
         if ($user->save()) {
-            event(new UserPasswordChanged($user));
+            $auth_link = "<a href='".route('admin.auth.user.show', auth()->id())."'>".Auth::user()->full_name.'</a>';
+            $asset_link = "<a href='".route('admin.access.user.show', $user->id)."'>".$user->name.'</a>';
+
+            event(new UserPasswordChanged($auth_link, $asset_link));
 
             return $user;
         }
@@ -218,13 +224,16 @@ class UserRepository extends BaseRepository
 
         $user->active = $status;
 
+        $auth_link = "<a href='".route('admin.auth.user.show', auth()->id())."'>".Auth::user()->full_name.'</a>';
+        $asset_link = "<a href='".route('admin.access.user.show', $user->id)."'>".$user->name.'</a>';
+
         switch ($status) {
             case 0:
-                event(new UserDeactivated($user));
+                event(new UserDeactivated($auth_link, $asset_link));
             break;
 
             case 1:
-                event(new UserReactivated($user));
+                event(new UserReactivated($auth_link, $asset_link));
             break;
         }
 
@@ -251,7 +260,10 @@ class UserRepository extends BaseRepository
         $confirmed = $user->save();
 
         if ($confirmed) {
-            event(new UserConfirmed($user));
+            $auth_link = "<a href='".route('admin.auth.user.show', auth()->id())."'>".Auth::user()->full_name.'</a>';
+            $asset_link = "<a href='".route('admin.access.user.show', $user->id)."'>".$user->name.'</a>';
+
+            event(new UserConfirmed($auth_link, $asset_link));
 
             // Let user know their account was approved
             if (config('access.users.requires_approval')) {
@@ -290,7 +302,10 @@ class UserRepository extends BaseRepository
         $unconfirmed = $user->save();
 
         if ($unconfirmed) {
-            event(new UserUnconfirmed($user));
+            $auth_link = "<a href='".route('admin.auth.user.show', auth()->id())."'>".Auth::user()->full_name.'</a>';
+            $asset_link = "<a href='".route('admin.access.user.show', $user->id)."'>".$user->name.'</a>';
+
+            event(new UserUnconfirmed($auth_link, $asset_link));
 
             return $user;
         }
@@ -317,7 +332,10 @@ class UserRepository extends BaseRepository
             $user->providers()->delete();
 
             if ($user->forceDelete()) {
-                event(new UserPermanentlyDeleted($user));
+                $auth_link = "<a href='".route('admin.auth.user.show', auth()->id())."'>".Auth::user()->full_name.'</a>';
+                $asset_link = "<a href='".route('admin.access.user.show', $user->id)."'>".$user->name.'</a>';
+
+                event(new UserPermanentlyDeleted($auth_link, $asset_link));
 
                 return $user;
             }
@@ -339,7 +357,10 @@ class UserRepository extends BaseRepository
         }
 
         if ($user->restore()) {
-            event(new UserRestored($user));
+            $auth_link = "<a href='".route('admin.auth.user.show', auth()->id())."'>".Auth::user()->full_name.'</a>';
+            $asset_link = "<a href='".route('admin.access.user.show', $user->id)."'>".$user->name.'</a>';
+
+            event(new UserRestored($auth_link, $asset_link));
 
             return $user;
         }

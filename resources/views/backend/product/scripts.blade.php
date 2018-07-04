@@ -19,7 +19,7 @@
                 url: "{{ route('admin.product.get-product') }}",
                 data: {
                     _token:  '{{ csrf_token() }}',
-                    category_id: $(this).val() 
+                    category_id: $(this).val()
                 },
                 dataType: 'JSON',
                 success: function(data) {
@@ -160,7 +160,7 @@
                     remove_button.closest('tr').remove();
 
                     swal('Product was successfully removed from the list.', '', 'success');
-                } 
+                }
             });
         });
 
@@ -195,7 +195,7 @@
                             }
                         });
                     }
-                })
+                });
             }
         });
 

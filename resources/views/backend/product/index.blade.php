@@ -15,16 +15,13 @@
                     Product
                 </h4> <!-- card-title -->
             </div> <!-- card-header -->
-
             <div class="card-body">
                 <h5 class="card-title">Choose Product</h5>
                 <hr>
-
                 <div class="row mt-4 mb-4">
                     <div class="col">
                         <div class="form-group row">
                             {{ html()->label('Product Category')->class('col-md-4 form-control-label')->for('po_number') }}
-
                             <div class="col-sm-8">
                                 <select name="product-category" id="product-category" class="form-control" data-placeholder="-- Select Product Category --">
                                     <option value=""></option>
@@ -34,10 +31,8 @@
                                 </select>
                             </div>
                         </div><!--form-group-->
-
                         <div class="form-group row">
                             <label for="product-name" class="col-md-4 form-control-label">Product Name</label>
-
                             <div class="col-sm-8">
                                 <select name="product" id="product_container" class="form-control" data-placeholder="-- Select Product Category First --" disabled>
                                     <option value=""></option>
@@ -47,7 +42,6 @@
                         <button class="btn btn-dark pull-right" id="add_product_btn">Add Product</button>
                     </div><!--col-->
                 </div><!--row-->
-
                 <!-- Pricing History -->
                 <h5 class="card-title">Pricing History</h5>
                 <div class="row mt-4 mb-4">
