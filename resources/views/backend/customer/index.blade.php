@@ -31,6 +31,8 @@
                                 <th>{{ __('labels.backend.customers.table.city') }}</th>
                                 <th>{{ __('labels.backend.customers.table.address') }}</th>
                                 <th>{{ __('labels.backend.customers.table.postal_code') }}</th>
+                                <th>{{ __('labels.backend.customers.table.updated_at') }}</th>
+                                <th>{{ __('labels.backend.customers.table.created_at') }}</th>
                                 <th>{{ __('labels.general.actions') }}</th>
                             </tr>
                             </thead>
@@ -42,12 +44,14 @@
                                         <td>{{ $customer->city}}</td>
                                         <td>{{ $customer->address}}</td>
                                         <td>{{ $customer->postal_code }}</td>
+                                        <td>{{ date('F d, Y h:i A', strtotime($customer->updated_at))}}</td>
+                                        <td>{{ date('F d, Y h:i A', strtotime($customer->created_at)) }}</td>
                                         <td>{!! $customer->action_buttons !!}</td>
                                     </tr>
                                 @endforeach
                             @else
                                 <tr>
-                                <td colspan="5"><p class="text-center">There are no stored Customers in the database...</p></td>
+                                <td colspan="7"><p class="text-center">There are no stored customers in the database...</p></td>
                                 </tr>
                             @endif
                             </tbody>

@@ -175,7 +175,7 @@ class UserRepository extends BaseRepository
                 $user->syncPermissions($data['permissions']);
 
                 $auth_link = "<a href='".route('admin.auth.user.show', auth()->id())."'>".Auth::user()->full_name.'</a>';
-                $asset_link = "<a href='".route('admin.access.user.show', $user->id)."'>".$user->name.'</a>';
+                $asset_link = "<a href='".route('admin.auth.user.show', $user->id)."'>".$user->name.'</a>';
 
                 event(new UserUpdated($auth_link, $asset_link));
 
@@ -199,7 +199,7 @@ class UserRepository extends BaseRepository
 
         if ($user->save()) {
             $auth_link = "<a href='".route('admin.auth.user.show', auth()->id())."'>".Auth::user()->full_name.'</a>';
-            $asset_link = "<a href='".route('admin.access.user.show', $user->id)."'>".$user->name.'</a>';
+            $asset_link = "<a href='".route('admin.auth.user.show', $user->id)."'>".$user->name.'</a>';
 
             event(new UserPasswordChanged($auth_link, $asset_link));
 
@@ -225,7 +225,7 @@ class UserRepository extends BaseRepository
         $user->active = $status;
 
         $auth_link = "<a href='".route('admin.auth.user.show', auth()->id())."'>".Auth::user()->full_name.'</a>';
-        $asset_link = "<a href='".route('admin.access.user.show', $user->id)."'>".$user->name.'</a>';
+        $asset_link = "<a href='".route('admin.auth.user.show', $user->id)."'>".$user->name.'</a>';
 
         switch ($status) {
             case 0:
@@ -261,7 +261,7 @@ class UserRepository extends BaseRepository
 
         if ($confirmed) {
             $auth_link = "<a href='".route('admin.auth.user.show', auth()->id())."'>".Auth::user()->full_name.'</a>';
-            $asset_link = "<a href='".route('admin.access.user.show', $user->id)."'>".$user->name.'</a>';
+            $asset_link = "<a href='".route('admin.auth.user.show', $user->id)."'>".$user->name.'</a>';
 
             event(new UserConfirmed($auth_link, $asset_link));
 
@@ -303,7 +303,7 @@ class UserRepository extends BaseRepository
 
         if ($unconfirmed) {
             $auth_link = "<a href='".route('admin.auth.user.show', auth()->id())."'>".Auth::user()->full_name.'</a>';
-            $asset_link = "<a href='".route('admin.access.user.show', $user->id)."'>".$user->name.'</a>';
+            $asset_link = "<a href='".route('admin.auth.user.show', $user->id)."'>".$user->name.'</a>';
 
             event(new UserUnconfirmed($auth_link, $asset_link));
 
@@ -333,7 +333,7 @@ class UserRepository extends BaseRepository
 
             if ($user->forceDelete()) {
                 $auth_link = "<a href='".route('admin.auth.user.show', auth()->id())."'>".Auth::user()->full_name.'</a>';
-                $asset_link = "<a href='".route('admin.access.user.show', $user->id)."'>".$user->name.'</a>';
+                $asset_link = "<a href='".route('admin.auth.user.show', $user->id)."'>".$user->name.'</a>';
 
                 event(new UserPermanentlyDeleted($auth_link, $asset_link));
 
@@ -358,7 +358,7 @@ class UserRepository extends BaseRepository
 
         if ($user->restore()) {
             $auth_link = "<a href='".route('admin.auth.user.show', auth()->id())."'>".Auth::user()->full_name.'</a>';
-            $asset_link = "<a href='".route('admin.access.user.show', $user->id)."'>".$user->name.'</a>';
+            $asset_link = "<a href='".route('admin.auth.user.show', $user->id)."'>".$user->name.'</a>';
 
             event(new UserRestored($auth_link, $asset_link));
 

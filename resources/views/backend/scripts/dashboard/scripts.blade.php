@@ -6,8 +6,9 @@ $(document).ready(function() {
     let buyAndResaleDataArr = [];
     let buyAndResaleProfit  = 0;
     let indentedProfit      = 0;
-    const current_currency = $(".currency-dropdown");
+    const current_currency  = $(".currency-dropdown");
     current_currency.data("previous_currency", current_currency.val());
+
     @if((Auth::user()->roles_label == 'Sales Agent') && (count($logged_in_user->target_revenues) != 0))
         let targetSale          = "{!! Auth::user()->target_revenues->last()->target_sale !!}";
     @endif
