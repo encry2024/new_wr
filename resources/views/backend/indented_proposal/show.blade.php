@@ -37,6 +37,7 @@
                                     <a href="#" class="btn btn-success ml-1 text-white" data-toggle="tooltip" title="Accept Proposal" id="accept_proposal"><i class="fa fa-check"></i></a>
                                     <a href="#" class="btn btn-danger ml-1" data-toggle="tooltip" title="Cancel Proposal" id="cancel_proposal"><i class="fa fa-ban"></i></a>
                                 @elseif ($model->collection_status == 'COMPLETED')
+                                    <a href="{{ route('admin.indented-proposal.export_pending_proposal', $model->id) }}" data-toggle="tooltip"  title="Export to Excel" class="btn btn-primary ml-1"><i class="fa fa-download"></i></a>
                                 @else
                                     <a href="#" class="btn btn-danger ml-1" data-toggle="tooltip" title="Cancel Proposal" id="cancel_proposal"><i class="fa fa-ban"></i></a>
                                 @endif
@@ -52,6 +53,8 @@
                                 @if ($model->collection_status == 'FOR-COLLECTION')
                                     <a href="#" class="btn btn-success ml-1 text-white" data-toggle="tooltip" title="Accept Proposal" id="accept_proposal"><i class="fa fa-check"></i></a>
                                 @endif
+                            @elseif (auth()->user()->roles_label == 'Sales Agent')
+                                <a href="{{ route('admin.indented-proposal.se_export_order_entry', $model->id) }}" class="btn btn-danger ml-1"><i class="fa fa-download"></i>&nbsp; Export to XLSX</a>
                             @endif
                         </div>
                     </div><!--btn-toolbar-->

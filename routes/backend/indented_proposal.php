@@ -17,6 +17,12 @@ Route::group([
 
     Route::resource('indented-proposal', 'IndentedProposalController');
 
+    set_time_limit(0);
+
+    Route::get('indented-proposal/export/{indented_proposal}', 'IndentedProposalController@exportPendingProposal')->name('indented-proposal.export_pending_proposal');
+    Route::get('indented-proposal/order_entry/{indented_proposal}', 'IndentedProposalController@exportOrderEntry')->name('indented-proposal.se_export_order_entry');
+
+
     Route::group(['prefix' => 'indented-proposal/{deletedIndentedProposal}'], function () {
         Route::get('delete', 'IndentedProposalStatusController@delete')->name('indented-proposal.delete-permanently');
         Route::get('restore', 'IndentedProposalStatusController@restore')->name('indented-proposal.restore');

@@ -164,7 +164,7 @@ return [
         Appstract\BladeDirectives\BladeDirectivesServiceProvider::class,
         Creativeorange\Gravatar\GravatarServiceProvider::class,
         HieuLe\Active\ActiveServiceProvider::class,
-
+        Maatwebsite\Excel\ExcelServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -231,7 +231,7 @@ return [
         'Active' => HieuLe\Active\Facades\Active::class,
         'Gravatar' => Creativeorange\Gravatar\Facades\Gravatar::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

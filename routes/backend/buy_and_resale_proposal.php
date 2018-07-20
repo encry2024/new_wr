@@ -17,6 +17,8 @@ Route::group([
 
     Route::resource('buy-and-resale-proposal', 'BuyAndResaleProposalController');
 
+    Route::get('buy-and-resale-proposal/export/{buyAndSellProposal}', 'BuyAndResaleProposalController@exportBuyAndResaleProposal')->name('buy-and-resale-proposal.export_pending_bns_proposal');
+
     Route::group(['prefix' => 'buy-and-resale/{deletedBuyAndResaleProposal}'], function () {
         Route::get('delete', 'BuyAndResaleProposalStatusController@delete')->name('buy-and-resale.delete-permanently');
         Route::get('restore', 'BuyAndResaleProposalStatusController@restore')->name('buy-and-resale.restore');

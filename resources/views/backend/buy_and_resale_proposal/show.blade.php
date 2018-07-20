@@ -52,6 +52,8 @@
                                 @if ($model->collection_status == 'FOR-COLLECTION')
                                     <a href="#" class="btn btn-success ml-1 text-white" data-toggle="tooltip" title="Accept Proposal" id="accept_proposal"><i class="fa fa-check"></i></a>
                                 @endif
+                            @elseif (auth()->user()->roles_label == 'Sales Agent')
+                                 <a href="{{ route('admin.buy-and-resale-proposal.export_pending_bns_proposal', $model->id) }}" class="btn btn-success ml-1 text-white" data-toggle="tooltip" title="Export to Excel"><i class="fa fa-download"></i></a>
                             @endif
                         </div>
                     </div><!--btn-toolbar-->

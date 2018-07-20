@@ -287,6 +287,8 @@ class ProjectRepository extends BaseRepository
 
             if ($pricing_history) {
 
+                $project->update(['price' => $pricing_history->price]);
+
                 $auth_link  = "<a href='".route('admin.auth.user.show', auth()->id())."'>".Auth::user()->full_name.'</a>';
                 $asset_link = "<a href='".route('admin.project.show', $project->id)."'>".$project->name.'</a>';
                 $model      = class_basename($this->model);
