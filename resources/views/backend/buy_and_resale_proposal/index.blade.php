@@ -42,7 +42,7 @@
                                 @foreach ($buy_and_resale_proposals as $buy_and_resale_proposal)
                                     <tr>
                                         <td>{!! $buy_and_resale_proposal->purchase_order ? $buy_and_resale_proposal->purchase_order : '<label class="badge badge-danger">N/A</label>' !!}</td>
-                                        <td>{{ $buy_and_resale_proposal->customer->name }}</td>
+                                        <td>{!! $buy_and_resale_proposal->customer->trashed() ? "<label class='badge badge-danger'>Customer was Deleted</label>" : $indented_proposal->customer->name !!}</td>
                                         <td>{{ $buy_and_resale_proposal->collection_status }}</td>
                                         <td>{{ date('F d, Y (h:i A)', strtotime($buy_and_resale_proposal->created_at)) }}</td>
                                         <td>{!! $buy_and_resale_proposal->action_buttons !!}</td>
@@ -61,13 +61,13 @@
             <div class="row">
                 <div class="col-7">
                     <div class="float-left">
-                        
+
                     </div>
                 </div><!--col-->
 
                 <div class="col-5">
                     <div class="float-right">
-                        
+
                     </div>
                 </div><!--col-->
             </div><!--row-->

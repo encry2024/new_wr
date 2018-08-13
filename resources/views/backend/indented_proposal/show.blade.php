@@ -32,6 +32,7 @@
                 <div class="col-sm-7">
                     <div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
                         <div class="btn-group btn-group-sm" role="group" aria-label="Project Actions">
+                            @if ($model->customer->trashed())
                             @if (auth()->user()->roles_label == 'Administrator')
                                 @if ($model->collection_status == 'PENDING')
                                     <a href="#" class="btn btn-success ml-1 text-white" data-toggle="tooltip" title="Accept Proposal" id="accept_proposal"><i class="fa fa-check"></i></a>

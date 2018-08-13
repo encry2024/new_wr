@@ -120,7 +120,7 @@ class IndentedProposalRepository extends BaseRepository
                     $product = explode('-', $data['indented_proposal_itemmable_id'][$i]);
                     $product_id  = $product[0];
                     $product_model = 'App\\Models\\'.$product[1].'\\'.$product[1];
-                    
+
                     $indented_proposal_item                                     = new IndentedProposalItem;
                     $indented_proposal_item->indented_proposal_id               = $indented_proposal->id;
                     $indented_proposal_item->indented_proposal_itemmable_id     = $product_id;
@@ -132,7 +132,7 @@ class IndentedProposalRepository extends BaseRepository
                     $indented_proposal_item->status                             = 'PROCESSING';
                     $indented_proposal_item->notify_me_after                    = ($data['delivery_date'][$i] - 2) * 7;
                     $indented_proposal_item->notification_date                  = date('Y-m-d');
-                    
+
                     if ($indented_proposal_item->save()) {
                         $product_object = $product_model::find($product_id);
                         $foreign_key = strtolower($product_object->data_model).'_id';
@@ -398,7 +398,7 @@ class IndentedProposalRepository extends BaseRepository
 
             if ($indented_proposal->update([
                 'collection_status' => 'COMPLETED'
-            ])) 
+            ]))
 
             {
                 $items = $indented_proposal->indented_proposal_items;

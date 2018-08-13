@@ -42,7 +42,7 @@
                                 @foreach ($indented_proposals as $indented_proposal)
                                     <tr>
                                         <td>{!! $indented_proposal->purchase_order ? $indented_proposal->purchase_order : '<label class="badge badge-danger">N/A</label>' !!}</td>
-                                        <td>{{ $indented_proposal->customer->name }}</td>
+                                        <td>{!! $indented_proposal->customer->trashed() ? "<label class='badge badge-danger'>Customer was Deleted</label>" : $indented_proposal->customer->name !!}</td>
                                         <td>{{ $indented_proposal->collection_status }}</td>
                                         <td>{{ date('F d, Y (h:i A)', strtotime($indented_proposal->created_at)) }}</td>
                                         <td>{!! $indented_proposal->action_buttons !!}</td>
@@ -61,13 +61,13 @@
             <div class="row">
                 <div class="col-7">
                     <div class="float-left">
-                        
+
                     </div>
                 </div><!--col-->
 
                 <div class="col-5">
                     <div class="float-right">
-                        
+
                     </div>
                 </div><!--col-->
             </div><!--row-->
