@@ -12,6 +12,6 @@ trait IndentedProposalItemRelationship
      */
     public function indented_proposal_itemmable()
     {
-        return $this->morphTo();
+        return $this->morphTo()->withTrashed();
     }
 }
