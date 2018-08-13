@@ -45,7 +45,7 @@
                                 @foreach ($projects as $project)
                                     <tr>
                                         <td>{{ $project->name }}</td>
-                                        @if ($project->customer->count())
+                                        @if ($project->customer->cout())
                                             <td>{!! $project->customer->trashed() ? "<label class='badge badge-danger' style='font-size: 10px;'>Customer was deleted</label>" : $project->customer->name !!}</td>
                                         @else
                                             <td>
