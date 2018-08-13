@@ -8,7 +8,7 @@
 
 @section('content')
 <div class="alert alert-warning">
-    <i class="fa fa-warning"></i> Warning <i class="fa fa-warning"></i> please make sure the item you are going to delete is not associated or assigned to any proposals or it will cause an error.
+    <i class="fa fa-warning"></i> Warning <i class="fa fa-warning"></i> please make sure the item you are going to delete is not associated or assigned to any proposals or it will cause an error. Delete the proposal first before deleting the item you want to remove.
     </div>
 
     <div class="card">
