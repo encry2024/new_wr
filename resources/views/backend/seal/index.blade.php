@@ -7,6 +7,10 @@
 @endsection
 
 @section('content')
+<div class="alert alert-warning">
+    <i class="fa fa-warning"></i> Warning <i class="fa fa-warning"></i> please make sure the item you are going to delete is not associated or assigned to any proposals or it will cause an error.
+    </div>
+
     <div class="card">
         <div class="card-body">
             <div class="row">
