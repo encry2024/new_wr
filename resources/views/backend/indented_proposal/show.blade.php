@@ -23,10 +23,6 @@
     <div class="alert alert-danger" role="alert">The customer related to this proposal was deleted. Please delete this proposal to avoid any problems.</div>
     @endif
 
-    @if ($indented_proposal_item->indented_proposal_itemmable->trashed())
-    <div class="alert alert-danger" role="alert">The customer related to this proposal was deleted. Please delete this proposal to avoid any problems.</div>
-    @endif
-
     <div class="card">
         <div class="card-body">
             <div class="row">
